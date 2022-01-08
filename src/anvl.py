@@ -12,14 +12,22 @@ def loads(anvl: str) -> list[dict[str, str]]:
     return decode(anvl.split("\n"))
 
 
-def dump(dicts: list[dict], anvl_file: str | Path, width: int = 80):
-    anvl = encode(dicts, width)
-    with open(anvl_file, "w", encoding="utf8") as fh:
+def dump(
+    dicts: list[dict],
+    anvl_file: str | Path,
+    width: int = 80,
+    indent: str = "\t",
+    line_end: str = "\r\n",
+):
+    anvl = encode(dicts, width, indent, line_end)
+    with open(anvl_file, "w", encoding="utf8", newline="") as fh:
         fh.write(anvl)
 
 
-def dumps(dicts: list[dict], width: int = 80) -> str:
-    return encode(dicts, width)
+def dumps(
+    dicts: list[dict], width: int = 80, indent: str = "\t", line_end: str = "\r\n"
+) -> str:
+    return encode(dicts, width, indent, line_end)
 
 
 def decode(lines: list[str]) -> list[dict[str, str]]:
@@ -49,7 +57,10 @@ def decode(lines: list[str]) -> list[dict[str, str]]:
     return records
 
 
-def encode(dicts: list[dict], width: int = 80) -> str:
+def encode(
+    dicts: list[dict], width: int = 80, indent: str = "\t", line_end: str = "\r\n"
+) -> str:
+
     anvl_rows = []
     for d in dicts:
         for k, v in d.items():
@@ -58,8 +69,8 @@ def encode(dicts: list[dict], width: int = 80) -> str:
                 anvl_rows.append(row)
             else:
                 anvl_rows.append(
-                    "\n".join(wrap(row, width=width, subsequent_indent="\t"))
+                    line_end.join(wrap(row, width=width, subsequent_indent=indent))
                 )
         anvl_rows.append("")
 
-    return "\n".join(anvl_rows)
+    return line_end.join(anvl_rows)
