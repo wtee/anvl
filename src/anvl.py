@@ -2,6 +2,8 @@ from pathlib import Path
 import re
 from textwrap import wrap
 
+# This is free and unencumbered software released into the public domain
+# under the terms of the Unlicense: https://unlicense.org/
 
 def load(anvl: str | Path) -> list[dict[str, str]]:
     with open(anvl, "r", encoding="utf8") as fh:
