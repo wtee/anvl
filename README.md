@@ -22,8 +22,3 @@ line endings used. For example:
 `anvl.dumps(list_of_dict, width=60, ident="    ", line_end="\n")`
 The default line width is 80 characters. The default indentation is a tab
 character. The default line ending is "\r\n".
-
-    anvl_file: str | Path,
-    width: int = 80,
-    indent: str = "\t",
-    line_end: str = "\r\n",
