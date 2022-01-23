@@ -3,6 +3,11 @@
 `anvl` is a Python module designed to serialize and deserialize of 
 [A Name-Value Language](https://tools.ietf.org/search/draft-kunze-anvl-02).
 
+## Installation
+
+Install via [PyPI](https://pypi.org/project/anvl/): 
+`pip install anvl`
+
 ## Usage
 
 To decode an ANVL file: `anvl.load(file_name)`. This returns a list of
