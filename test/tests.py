@@ -1,6 +1,6 @@
 import os
 
-from src import anvl
+import anvl
 
 # Input test
 
